@@ -3,220 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Tech Executive Coach</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #0a192f;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #64ffda;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            color: #8892b0;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: transparent;
-            border: 2px solid #64ffda;
-            color: #64ffda;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-
-        .service-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        h2 {
-            color: #64ffda;
-            margin-bottom: 1rem;
-        }
-
-        .about {
-            margin: 4rem 0;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #8892b0;
-        }
-    </style>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="content">
-        <header>
-            <h1>Alta Diaz</h1>
-            <p class="tagline">Guiding Tech Leaders to New Frontiers</p>
-            <a href="#contact" class="cta-button">Launch Your Potential</a>
-        </header>
+    <div class="quiz-container">
+        <div id="quiz">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+        <button id="submit">Next Question</button>
 
-        <section class="services">
-            <div class="service-card">
-                <h2>Strategic Vision</h2>
-                <p>Navigate the tech cosmos with clarity and purpose. Together, we'll chart a course for your organization's future.</p>
-            </div>
-            <div class="service-card">
-                <h2>Leadership Acceleration</h2>
-                <p>Elevate your leadership skills to escape the gravity of conventional thinking and inspire stellar team performance.</p>
-            </div>
-            <div class="service-card">
-                <h2>Innovation Catalyst</h2>
-                <p>Unlock the universe of possibilities within your organization through innovative thinking and strategic execution.</p>
-            </div>
-        </section>
+        <div id="results" style="display:none;">
+            <h2>Your Results</h2>
+            <p id="score-result"></p>
+        </div>
 
-        <section class="about">
-            <h2>Mission Control</h2>
-            <p>With over 15 years of experience in the tech industry, I've helped countless executives and teams reach their full potential. My approach combines cutting-edge leadership strategies with a deep understanding of the technological landscape.</p>
-        </section>
-
-        <section class="testimonials">
-            <div class="testimonial">
-                <p>"Jane's guidance was the rocket fuel our leadership team needed. Her insights transformed our approach to innovation."</p>
-                <p>- Sarah Chen, CTO of TechNova</p>
+        <div id="emailModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Enter your email to receive your results</h2>
+                <form id="email-form-modal">
+                    <label for="email-modal">Email:</label>
+                    <input type="email" id="email-modal" placeholder="Your email" required autocomplete="email">
+                    <button type="submit">Submit</button>
+                </form>
             </div>
-            <div class="testimonial">
-                <p>"Working with Jane helped me navigate the challenges of scaling our startup. Her strategic vision is truly out of this world."</p>
-                <p>- Mark Thompson, CEO of Quantum Leap Software</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>Ready to explore new horizons? Let's connect.</p>
-            <a href="#contact" class="cta-button">Contact Me</a>
-        </footer>
+        </div>
     </div>
-
-    <script>
-        particlesJS('particles-js',
-          {
-            "particles": {
-              "number": {
-                "value": 100,
-                "density": {
-                  "enable": true,
-                  "value_area": 800
-                }
-              },
-              "color": {
-                "value": "#ffffff"
-              },
-              "shape": {
-                "type": "circle"
-              },
-              "opacity": {
-                "value": 0.5,
-                "random": false
-              },
-              "size": {
-                "value": 3,
-                "random": true
-              },
-              "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
-              },
-              "move": {
-                "enable": true,
-                "speed": 6,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false
-              }
-            },
-            "interactivity": {
-              "detect_on": "canvas",
-              "events": {
-                "onhover": {
-                  "enable": true,
-                  "mode": "repulse"
-                },
-                "onclick": {
-                  "enable": true,
-                  "mode": "push"
-                },
-                "resize": true
-              }
-            },
-            "retina_detect": true
-          }
-        );
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
